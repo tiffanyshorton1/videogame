@@ -1,73 +1,102 @@
-xCoordinate = random(0,300)
+#Coordinates for the ellipse
+xCoordinate = random(10,300) 
 yCoordinate = random(60,340)
+
+
+#Changes the speed of the ball
 xSpeed = 2
 ySpeed = 2
+
+
+#Variables assigned to each brick that determines visability
 b1 = True
 b2 = True
 b3 = True
 b4 = True
 b5 = True 
 b6 = True
+
+
+#Variable that enables/disables the motion of the ball
 brick = "go"
 
+
+#basic background
 def setup():
     size(600,400)
     background(0)
     
     
+#Everything that moves
 def draw():
-    global xCoordinate, yCoordinate, xSpeed, ySpeed, b1, b2, b3, b4, b5, b6, brick       #calls variable from gloabl scope
+    #calls variables from global scope
+    global xCoordinate, yCoordinate, xSpeed, ySpeed, b1, b2, b3, b4, b5, b6, brick
+    
+    
+    #Size variable sets the size of the ellipse; Edge variables help determine the outermost coordinates of the ball
     size = 15
     hEdge = size/2
     vEdge = size/2
     
-                                                          #redraws background to cover circle
+    
+    #redraws background to cover circle
     background(0)
     
+    
+    #Determines the visability of the bricks
     noStroke()
     if b1 == False:
         fill(0)
     else:
         fill("#5676f6")
     rect(0,0,100,50)
+    
     if b2 == False:
         fill(0)
     else:
         fill("#ebcf97")
     rect(100,0,100,50)
+    
     if b3 == False:
         fill(0)
     else:
         fill("#153e4c")
     rect(200,0,100,50)
+    
     if b4 == False:
         fill(0)
     else:
         fill("#c932b2")
     rect(300,0,100,50)
+    
     if b5 == False:
         fill(0)
     else:
         fill("#19ccfc")
     rect(400,0,100,50)
+    
     if b6 == False:
         fill(0)
     else:
         fill("#09cc87")
     rect(500,0,100,50)
     
-                                                          #establishs new circle
+    
+    #establishs movement of circle
     fill(255)
-    xCoordinate += xSpeed                                 #+= shorthand to add a value to the original
+    xCoordinate += xSpeed                 
     yCoordinate += ySpeed
     if brick == "go":
         print(xCoordinate, yCoordinate)
         ellipse(xCoordinate,yCoordinate,size,size)
 
-                                                          #establishs condition to reset xCoordinate at the ends of the screen
+
+    #establishs condition to reset xCoordinate at the ends of the screen
     if xCoordinate >= 600-hEdge or xCoordinate <= hEdge:
         xSpeed = -xSpeed
         
+    
+    #Bricks disappear when hit, ball bounces off of brick and top of screen when brick is not visible
     if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge <= 50:
         if b1 == True:
             b1 = False
@@ -76,7 +105,6 @@ def draw():
             if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
 
-    
     if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge <= 50:
         if b2 == True:
             b2 = False
@@ -84,15 +112,13 @@ def draw():
             if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
 
-        
     if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge <= 50:
         if b3 == True:
             b3 = False
         if b3 == False:
             if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
-
-    
+                
     if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge <= 50:
         if b4 == True:
             b4 = False
@@ -100,7 +126,6 @@ def draw():
             if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
 
-        
     if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge <= 50:
         if b5 == True:
             b5 = False
@@ -108,26 +133,31 @@ def draw():
             if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
 
-        
     if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 50:
         if b6 == True:
             b6 = False
         if b6 == False:
             if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
-
     
+    #creates paddle
     fill(255)
     rect(mouseX, 370, 90, 5)
     
+    
+    #Makes paddle move with mouse
     if yCoordinate + vEdge >= 370 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
         
+        
+    #Fail message
     if yCoordinate >= 400:
         textSize (50)
         text("GAME OVER ALREADY?", 27, 150)
         brick = "stop"
 
+
+    #Win message
     if b1 == False and b2 == False and b3 == False and b4 == False and b5 == False and b6 == False:
         textSize (50)
         stroke(255, 102, 90)
