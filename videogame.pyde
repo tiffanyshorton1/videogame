@@ -1,5 +1,5 @@
 xCoordinate = 300
-yCoordinate = 375
+yCoordinate = 200
 xSpeed = 2
 ySpeed = 2
 b1 = True
@@ -88,12 +88,17 @@ def draw():
         b6 = False
     
     fill(255)
-    rect(mouseX, 370, 70, 5)
+    rect(mouseX, 370, 90, 5)
     
-    if yCoordinate + vEdge >= 370 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 50:
+    if yCoordinate + vEdge >= 370 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
         
-    if yCoordinate <= 400:
-        text
-    
+    if yCoordinate >= 400:
+        textSize (50)
+        text("GAME OVER ALREADY?", 27, 150)
+
+    if b1 == False and b2 == False and b3 == False and b4 == False and b5 == False and b6 == False:
+        textSize (50)
+        stroke(255, 102, 90)
+        text("YOU'RE A WINNER", ,150))
     
