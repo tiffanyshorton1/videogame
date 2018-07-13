@@ -1,6 +1,6 @@
 #Coordinates for the ellipse
 xCoordinate = random(10,300) 
-yCoordinate = random(60,340)
+yCoordinate = random(120,340)
 
 
 #Changes the speed of the ball
