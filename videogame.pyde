@@ -24,8 +24,8 @@ b12 = True
 
 
 #Variable that enables/disables the motion of the ball
-brick = "go"
-
+ball = "stop"
+game = "start"
 
 #score variable
 score = 0
@@ -38,8 +38,10 @@ def setup():
 #Everything that moves
 def draw():
     #calls variables from global scope
-    global xCoordinate, yCoordinate, xSpeed, ySpeed
-    global b1, b2, b3, b4, b5, b6, brick, score, b7, b8, b9, b10, b11, b12
+    global xCoordinate, yCoordinate, xSpeed, ySpeed, game 
+    global b1, b2, b3, b4, b5, b6, ball, score, b7, b8, b9, b10, b11, b12
+    
+    
     
     
     #Size variable sets the size of the ellipse; Edge variables help determine the outermost coordinates of the ball
@@ -47,16 +49,22 @@ def draw():
     hEdge = size/2
     vEdge = size/2
     
-    
     #redraws background to cover circle
     background(0)
     
+    if game == "start":
+        fill(255,0,0)
+        rect(225, 200, 150, 50)
+        fill(255)
+        text("START", 224, 242)
+
     
     #score rectangle
     strokeWeight(2)
     stroke("#DBC677")
     noFill()
     rect(1,348,60,50)
+    fill(255)
     textSize(48)
     if score <=9:
         text(score, 16, 392)
@@ -124,7 +132,7 @@ def draw():
     if b10 == False:
         fill(0)
     else:
-        fill("#c445f5")
+        fill(210,40,63)
     rect(300,50,100,50)
     
     if b11 == False:
@@ -142,7 +150,7 @@ def draw():
     #establishs movement of circle
     fill(random(255),random(255),random(255))
     
-    if brick == "go":
+    if ball == "go":
         xCoordinate += xSpeed                 
         yCoordinate += ySpeed
         ellipse(xCoordinate,yCoordinate,size,size)
@@ -272,13 +280,12 @@ def draw():
     #Makes paddle move with mouse
     if yCoordinate + vEdge >= 340 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
-        
-    print(xCoordinate, yCoordinate)    
+            
     #Fail message
     if yCoordinate >= 400:
         textSize (50)
         text("GAME OVER ALREADY?", 27, 150)
-        brick = "stop"
+        ball = "stop"
 
 
     #Win message
@@ -286,5 +293,11 @@ def draw():
         textSize (50)
         stroke(255, 102, 90)
         text("YOU'RE A WINNER", 77,150)
-        brick = "stop"
+        ball = "stop"
+        
+def mouseClicked():
+    if mouseX >= 225 and mouseX <= 375 and mouseY >= 200 and mouseY <= 250:
+        print("stuff")
+        game = "going"
+        ball = "go"
     
