@@ -40,18 +40,19 @@ def draw():
     #calls variables from global scope
     global xCoordinate, yCoordinate, xSpeed, ySpeed, game 
     global b1, b2, b3, b4, b5, b6, ball, score, b7, b8, b9, b10, b11, b12
-    
-    
-    
-    
+
+
     #Size variable sets the size of the ellipse; Edge variables help determine the outermost coordinates of the ball
     size = 15
     hEdge = size/2
     vEdge = size/2
     
+    
     #redraws background to cover circle
     background(0)
-    
+
+
+    #Start button
     if game == "start":
         fill(255,0,0)
         rect(225, 200, 150, 50)
@@ -146,6 +147,7 @@ def draw():
     else:
         fill("#f18ad3")
     rect(500,50,100,50)
+    
     
     #establishs movement of circle
     fill(random(255),random(255),random(255))
@@ -281,6 +283,7 @@ def draw():
     if yCoordinate + vEdge >= 340 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
             
+            
     #Fail message
     if yCoordinate >= 400:
         textSize (50)
@@ -295,6 +298,8 @@ def draw():
         text("YOU'RE A WINNER", 77,150)
         ball = "stop"
         
+        
+#Defines what happens when start button is clicked
 def mouseClicked():
     global game, ball, b1, b2, b3, b4, b5, b6, ball, score, b7, b8, b9, b10, b11, b12
     if mouseX >= 225 and mouseX <= 375 and mouseY >= 200 and mouseY <= 250:
