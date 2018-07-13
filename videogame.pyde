@@ -54,7 +54,7 @@ def draw():
 
     #Start button
     if game == "start":
-        fill(255,0,0)
+        fill(255, 0, 0)
         rect(225, 200, 150, 50)
         fill(255)
         text("START", 224, 242)
@@ -64,106 +64,112 @@ def draw():
     strokeWeight(2)
     stroke("#DBC677")
     noFill()
-    rect(1,348,60,50)
+    rect(1, 348, 60, 50)
     fill(255)
+    #keeps the rectangle as centered as possible relative to the rectangle
     textSize(48)
     if score <=9:
         text(score, 16, 392)
     elif score >= 10:
-        text(score, 0,392)
+        text(score, 0, 392)
     
     
     #Determines the visability of the bricks
+    #Row 1
     noStroke()
     if b1 == False:
         fill(0)
     else:
         fill("#5676f6")
-    rect(0,0,100,50)
+    rect(0, 0, 100, 50)
     
     if b2 == False:
         fill(0)
     else:
         fill("#ebcf97")
-    rect(100,0,100,50)
+    rect(100, 0, 100, 50)
     
     if b3 == False:
         fill(0)
     else:
         fill("#153e4c")
-    rect(200,0,100,50)
+    rect(200, 0, 100, 50)
     
     if b4 == False:
         fill(0)
     else:
         fill("#c932b2")
-    rect(300,0,100,50)
+    rect(300, 0, 100, 50)
     
     if b5 == False:
         fill(0)
     else:
         fill("#19ccfc")
-    rect(400,0,100,50)
+    rect(400, 0, 100, 50)
     
     if b6 == False:
         fill(0)
     else:
         fill("#09cc87")
-    rect(500,0,100,50)
+    rect(500, 0, 100, 50)
     
     #Row 2
     if b7 == False:
         fill(0)
     else:
         fill("#887b95")
-    rect(0,50,100,50)
+    rect(0, 50, 100, 50)
     
     if b8 == False:
         fill(0)
     else:
         fill("#9890e4")
-    rect(100,50,100,50)
+    rect(100, 50, 100, 50)
     
     if b9 == False:
         fill(0)
     else:
         fill("#59bcd4")
-    rect(200,50,100,50)
+    rect(200, 50, 100, 50)
     
     if b10 == False:
         fill(0)
     else:
-        fill(210,40,63)
-    rect(300,50,100,50)
+        fill(210, 40, 63)
+    rect(300, 50, 100, 50)
     
     if b11 == False:
         fill(0)
     else:
         fill("#7b1779")
-    rect(400,50,100,50)
+    rect(400, 50, 100, 50)
     
     if b12 == False:
         fill(0)
     else:
         fill("#f18ad3")
-    rect(500,50,100,50)
+    rect(500, 50, 100, 50)
     
     
-    #establishs movement of circle
-    fill(random(255),random(255),random(255))
-    
+    #Creates ball and enables movement
+    fill(random(255), random(255), random(255))
     if ball == "go":
         xCoordinate += xSpeed                 
         yCoordinate += ySpeed
-        ellipse(xCoordinate,yCoordinate,size,size)
+        ellipse(xCoordinate, yCoordinate, size, size)
 
 
-    #establishs condition to reset xCoordinate at the ends of the screen
+    #Condition to bounce off of the walls
     if xCoordinate >= 600-hEdge or xCoordinate <= hEdge:
         xSpeed = -xSpeed
         
     
-    #Bricks disappear when hit, ball bounces off of brick and top of screen when brick is not visible
+    #Brick bounce conditionals
+        #Outer conditional: esablishes boarder of bricks
+        #1st middle conditional: causes brick to disappear, the ball to bounce, and the score to change when the ball is hit
+        #2nd middle conditional: establishes what will happen if the hiddne brick is hit
+        #Inner conditional: causes ball to go into the empty space and bounce off of game ceiling
+    #Row 1
     if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge <= 50:
         if b1 == True:
             b1 = False
