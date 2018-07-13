@@ -15,6 +15,12 @@ b3 = True
 b4 = True
 b5 = True 
 b6 = True
+b7 = True
+b8 = True
+b9 = True
+b10 = True
+b11 = True
+b12 = True
 
 
 #Variable that enables/disables the motion of the ball
@@ -32,7 +38,8 @@ def setup():
 #Everything that moves
 def draw():
     #calls variables from global scope
-    global xCoordinate, yCoordinate, xSpeed, ySpeed, b1, b2, b3, b4, b5, b6, brick, score
+    global xCoordinate, yCoordinate, xSpeed, ySpeed
+    global b1, b2, b3, b4, b5, b6, brick, score, b7, b8, b9, b10, b11, b12
     
     
     #Size variable sets the size of the ellipse; Edge variables help determine the outermost coordinates of the ball
@@ -95,43 +102,42 @@ def draw():
         fill("#09cc87")
     rect(500,0,100,50)
     
-    #second row of bricks
-    noStroke()
+    #Row 2
     if b7 == False:
         fill(0)
     else:
-        fill("#5676f6")
-    rect(0,0,100,50)
+        fill("#887b95")
+    rect(0,50,100,50)
     
     if b8 == False:
         fill(0)
     else:
-        fill("#ebcf97")
-    rect(100,0,100,50)
+        fill("#9890e4")
+    rect(100,50,100,50)
     
     if b9 == False:
         fill(0)
     else:
-        fill("#153e4c")
-    rect(200,0,100,50)
+        fill("#59bcd4")
+    rect(200,50,100,50)
     
     if b10 == False:
         fill(0)
     else:
-        fill("#c932b2")
-    rect(300,0,100,50)
+        fill("#c445f5")
+    rect(300,50,100,50)
     
     if b11 == False:
         fill(0)
     else:
-        fill("#19ccfc")
-    rect(400,0,100,50)
+        fill("#7b1779")
+    rect(400,50,100,50)
     
     if b12 == False:
         fill(0)
     else:
-        fill("#09cc87")
-    rect(500,0,100,50)
+        fill("#f18ad3")
+    rect(500,50,100,50)
     
     #establishs movement of circle
     fill(random(255),random(255),random(255))
@@ -201,7 +207,63 @@ def draw():
         if b6 == False:
             if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
-    
+                
+    #Row 2
+    if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100:
+        if b7 == True:
+            b7 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b7 == False:
+            if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+
+    if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100 :
+        if b8 == True:
+            b8 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b8 == False:
+            if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+
+    if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100:
+        if b9 == True:
+            b9 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b9 == False:
+            if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+                
+    if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100:
+        if b10 == True:
+            b10 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b10 == False:
+            if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+
+    if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100:
+        if b11 == True:
+            b11 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b11 == False:
+            if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+
+    if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge > 50 and yCoordinate - vEdge <= 100 :
+        if b12 == True:
+            b12 = False
+            ySpeed = -ySpeed
+            score += 1
+        if b12 == False:
+            if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge > 50:
+                ySpeed = ySpeed
+                
+                
     #creates paddle
     fill(255)
     rect(mouseX, 340, 90, 5)
