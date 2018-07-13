@@ -83,11 +83,11 @@ def draw():
     
     
     #establishs movement of circle
-    fill(255)
-    xCoordinate += xSpeed                 
-    yCoordinate += ySpeed
+    fill(random(255),random(255),random(255))
+    
     if brick == "go":
-        print(xCoordinate, yCoordinate)
+        xCoordinate += xSpeed                 
+        yCoordinate += ySpeed
         ellipse(xCoordinate,yCoordinate,size,size)
 
 
@@ -154,7 +154,7 @@ def draw():
     if yCoordinate + vEdge >= 370 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
         
-        
+    print(xCoordinate, yCoordinate)    
     #Fail message
     if yCoordinate >= 400:
         textSize (50)
