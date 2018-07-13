@@ -21,16 +21,18 @@ b6 = True
 brick = "go"
 
 
+#score variable
+score = 0
+
 #basic background
 def setup():
     size(600,400)
     background(0)
     
-    
 #Everything that moves
 def draw():
     #calls variables from global scope
-    global xCoordinate, yCoordinate, xSpeed, ySpeed, b1, b2, b3, b4, b5, b6, brick
+    global xCoordinate, yCoordinate, xSpeed, ySpeed, b1, b2, b3, b4, b5, b6, brick, score
     
     
     #Size variable sets the size of the ellipse; Edge variables help determine the outermost coordinates of the ball
@@ -41,6 +43,15 @@ def draw():
     
     #redraws background to cover circle
     background(0)
+    
+    
+    #score rectangle
+    strokeWeight(2)
+    stroke("#DBC677")
+    noFill()
+    rect(1,348,50,50)
+    textSize(48)
+    text(score, 12, 392)
     
     
     #Determines the visability of the bricks
@@ -101,6 +112,7 @@ def draw():
         if b1 == True:
             b1 = False
             ySpeed = -ySpeed
+            score += 1
         if b1 == False:
             if xCoordinate + vEdge > 0 and xCoordinate - vEdge <= 100 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -109,6 +121,7 @@ def draw():
         if b2 == True:
             b2 = False
             ySpeed = -ySpeed
+            score += 1
         if b2 == False:
             if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -117,6 +130,7 @@ def draw():
         if b3 == True:
             b3 = False
             ySpeed = -ySpeed
+            score += 1
         if b3 == False:
             if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -125,6 +139,7 @@ def draw():
         if b4 == True:
             b4 = False
             ySpeed = -ySpeed
+            score += 1
         if b4 == False:
             if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -133,6 +148,7 @@ def draw():
         if b5 == True:
             b5 = False
             ySpeed = -ySpeed
+            score += 1
         if b5 == False:
             if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -141,17 +157,18 @@ def draw():
         if b6 == True:
             b6 = False
             ySpeed = -ySpeed
+            score += 1
         if b6 == False:
             if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
     
     #creates paddle
     fill(255)
-    rect(mouseX, 370, 90, 5)
+    rect(mouseX, 340, 90, 5)
     
     
     #Makes paddle move with mouse
-    if yCoordinate + vEdge >= 370 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
+    if yCoordinate + vEdge >= 340 and xCoordinate - vEdge >= mouseX and xCoordinate + vEdge <= mouseX + 90:
         ySpeed= -ySpeed
         
     print(xCoordinate, yCoordinate)    
