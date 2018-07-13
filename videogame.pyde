@@ -108,6 +108,7 @@ def draw():
     if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge <= 50:
         if b2 == True:
             b2 = False
+            ySpeed = -ySpeed
         if b2 == False:
             if xCoordinate + vEdge > 100 and xCoordinate - vEdge <= 200 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -115,6 +116,7 @@ def draw():
     if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge <= 50:
         if b3 == True:
             b3 = False
+            ySpeed = -ySpeed
         if b3 == False:
             if xCoordinate + vEdge > 200 and xCoordinate - vEdge <= 300 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -122,6 +124,7 @@ def draw():
     if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge <= 50:
         if b4 == True:
             b4 = False
+            ySpeed = -ySpeed
         if b4 == False:
             if xCoordinate + vEdge > 300 and xCoordinate - vEdge <= 400 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -129,6 +132,7 @@ def draw():
     if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge <= 50:
         if b5 == True:
             b5 = False
+            ySpeed = -ySpeed
         if b5 == False:
             if xCoordinate + vEdge > 400 and xCoordinate - vEdge <= 500 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -136,6 +140,7 @@ def draw():
     if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 50:
         if b6 == True:
             b6 = False
+            ySpeed = -ySpeed
         if b6 == False:
             if xCoordinate + vEdge > 500 and xCoordinate - vEdge <= 600 and yCoordinate - vEdge <= 0:
                 ySpeed = -ySpeed
@@ -151,7 +156,7 @@ def draw():
         
         
     #Fail message
-    if yCoordinate >= 400:
+    if yCoordinate >= 400 and brick == "go":
         textSize (50)
         text("GAME OVER ALREADY?", 27, 150)
         brick = "stop"
