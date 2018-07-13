@@ -156,7 +156,7 @@ def draw():
         
         
     #Fail message
-    if yCoordinate >= 400 and brick == "go":
+    if yCoordinate >= 400:
         textSize (50)
         text("GAME OVER ALREADY?", 27, 150)
         brick = "stop"
