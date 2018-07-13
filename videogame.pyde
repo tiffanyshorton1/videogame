@@ -296,8 +296,8 @@ def draw():
         ball = "stop"
         
 def mouseClicked():
+    global game, ball
     if mouseX >= 225 and mouseX <= 375 and mouseY >= 200 and mouseY <= 250:
-        print("stuff")
         game = "going"
         ball = "go"
     
