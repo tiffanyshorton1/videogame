@@ -9,18 +9,18 @@ ySpeed = 2
 
 
 #Variables assigned to each brick that determines visability
-b1 = True
-b2 = True
-b3 = True
-b4 = True
-b5 = True 
-b6 = True
-b7 = True
-b8 = True
-b9 = True
-b10 = True
-b11 = True
-b12 = True
+b1 = False
+b2 = False
+b3 = False
+b4 = False
+b5 = False 
+b6 = False
+b7 = False
+b8 = False
+b9 = False
+b10 = False
+b11 = False
+b12 = False
 
 
 #Variable that enables/disables the motion of the ball
@@ -289,15 +289,27 @@ def draw():
 
 
     #Win message
-    if b1 == False and b2 == False and b3 == False and b4 == False and b5 == False and b6 == False:
+    if b1 == False and b2 == False and b3 == False and b4 == False and b5 == False and b6 == False and game == "going":
         textSize (50)
         stroke(255, 102, 90)
         text("YOU'RE A WINNER", 77,150)
         ball = "stop"
         
 def mouseClicked():
-    global game, ball
+    global game, ball, b1, b2, b3, b4, b5, b6, ball, score, b7, b8, b9, b10, b11, b12
     if mouseX >= 225 and mouseX <= 375 and mouseY >= 200 and mouseY <= 250:
         game = "going"
         ball = "go"
+        b1 = True
+        b2 = True
+        b3 = True
+        b4 = True
+        b5 = True
+        b6 = True
+        b7 = True
+        b8 = True
+        b9 = True
+        b10 = True
+        b11 = True
+        b12 = True
     
